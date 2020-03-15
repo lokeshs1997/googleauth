@@ -1,0 +1,39 @@
+<html>
+<body>
+
+<p><a href="#" onClick="logInWithFacebook()">Log In with the JavaScript SDK</a></p>
+
+<script>
+    //http://localhost/facebook/callback.php#
+  logInWithFacebook = function() {
+    FB.login(function(response) {
+        console.log(response);
+      if (response.authResponse) {
+        alert('You are logged in & cookie set!');
+        // Now you can redirect the user or do an AJAX request to
+        // a PHP script that grabs the signed request from the cookie.
+      } else {
+        alert('User cancelled login or did not fully authorize.');
+      }
+    });
+    return false;
+  };
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '892264077895494',
+      cookie: true, // This is important, it's not enabled by default
+      version: 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  //"EAAMrgmtop0YBAMqERUY9t7kBgzi5JSawdkfcezXgwCPR7R41xxx61DIWAB4lWAPDHSQehq5yX7mmG7i2jRZAV8cwjKWBogzTPLZCQ39RyUiZCfnsCQQ5eWuxISRh7xxZC5tuBUkejn3yRmRPkazpJccrOT3m7jstUkEEsHZAhkWpoExxOcEOOVL4MZAPCOIfJZB7DJ2GvsVYgZDZD"
+</script>
+</body>
+</html>
