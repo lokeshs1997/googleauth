@@ -2,16 +2,15 @@
 <body>
 
 <p><a href="#" onClick="logInWithFacebook()">Log In with the JavaScript SDK</a></p>
+<p id="data"></p>
 
 <script>
-    //http://localhost/facebook/callback.php#
   logInWithFacebook = function() {
     FB.login(function(response) {
         console.log(response);
       if (response.authResponse) {
         alert('You are logged in & cookie set!');
-        // Now you can redirect the user or do an AJAX request to
-        // a PHP script that grabs the signed request from the cookie.
+        document.getElementById('data').innerHTML =JSON.stringify(response.authResponse);
       } else {
         alert('User cancelled login or did not fully authorize.');
       }
@@ -33,7 +32,6 @@
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-  //"EAAMrgmtop0YBAMqERUY9t7kBgzi5JSawdkfcezXgwCPR7R41xxx61DIWAB4lWAPDHSQehq5yX7mmG7i2jRZAV8cwjKWBogzTPLZCQ39RyUiZCfnsCQQ5eWuxISRh7xxZC5tuBUkejn3yRmRPkazpJccrOT3m7jstUkEEsHZAhkWpoExxOcEOOVL4MZAPCOIfJZB7DJ2GvsVYgZDZD"
 </script>
 </body>
 </html>
